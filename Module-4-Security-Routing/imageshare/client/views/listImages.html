@@ -1,0 +1,50 @@
+<!------------------------------------------------------------>
+<!-- TEMPLATE - MAIN IMAGES                                 -->
+<!------------------------------------------------------------>
+<template name="listImages">
+   <div class="container">
+      <div class="row mt-top-row">
+         {{ #if currentUser }}
+            <button class="btn btn-success btn-lg js-show-image-form">Add Image</button>
+         {{ /if }}
+      </div>
+
+      <div class="row mt-top-row">
+         {{ #if filteringImages}}
+            <h2>Showing images for user: {{ getFilteredUserName }}</h2>
+            <p><a href="#" class='mt-remove-filter js-remove-usr-img-filter'>clear filter</a></p>
+         {{ /if}}
+      </div>
+
+      <div class="row mt-top-row">
+         {{ #each images }}
+         <div class="col-xs-12 col-md-4" id='{{ _id }}'>
+            <div class="thumbnail">
+               <div class="mt-thumb-image">
+                  <a href="/showimage/{{ _id }}"><img class="js-image img-responsive img-thumbnail" src="{{ img_src }}" alt="{{ img_alt }}" /></a>
+               </div>
+               <div class="caption">
+                  <!-- <h3>Rating: {{ rating }}</h3> -->
+                  <p class='lead'>{{ img_alt }}</p>
+                  <a href="#" class="js-set-usr-img-filter"><p>Created by: {{ getUserName createdBy }}</p></a>
+               </div>
+               <div>
+                  {{ #if currentUser }}
+                     <p>{{> starsRating mutable="true" size="lg" class="js-rate-image" ratingId=_id rating=rating }}</p>
+                     <div class="mt-delete-button">
+                        <button class="js-del-image btn btn-warning">Delete</button>
+                     </div>
+                  {{ else }}
+                     <p>{{> starsRating size="lg" class="js-rate-image" ratingId=_id rating=rating }}</p>
+                  {{ /if }}
+               </div>
+            </div>
+            <!-- / thumbnail -->
+         </div>
+         <!-- / col -->
+         {{ /each }}
+      </div>
+      <!-- / row -->
+   </div>
+   <!-- / container -->
+</template>

@@ -1,0 +1,28 @@
+/* CSS declarations go here */
+
+
+.js-image {
+   max-height: 150px;
+   max-width: 200px;
+}
+
+.js-rate-image {
+   margin: auto;
+}
+.thumbnail {
+   text-align: center;
+}
+
+h1, .modal-footer, .modal-title {
+   text-align: center;
+}
+
+.mt-top-row {
+   text-align: center;
+   padding-bottom: 20px;
+}
+
+.modal-dialog {
+   background-color: white;
+   border-radius: 10px;
+}

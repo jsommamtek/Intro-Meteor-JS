@@ -1,0 +1,31 @@
+<!------------------------------------------------------------>
+<!-- TEMPLATE - ADD IMAGE MODAL                             -->
+<!------------------------------------------------------------>
+<template name="addImage">
+   <div class="modal fade" id="addImage">
+      <div class="modal-dialog">
+         <div class="model-content">
+            <div class="modal-header">
+               <button type="button" class="close" data-dismiss="modal"><span>&times;</span></button>
+               <h2 class="modal-title">Add Image</h2>
+            </div>
+            <form class="js-add-image ">
+               <div class="modal-body">
+
+                  <div class="form-group">
+                     <input class="form-control input-lg" type="text" name="imgSrc" placeholder="Paste Image Source URL" />
+                  </div>
+                  <div class="form-group">
+                     <input class="form-control input-lg" type="text" name="imgAlt" placeholder="Paste Image Alt Text" />
+                  </div>
+
+               </div>
+               <div class="modal-footer">
+                  <button class="btn btn-success btn-lg">Save</button>
+                  <button class="btn btn-warning btn-lg" data-dismiss="modal">Cancel</button>
+               </div>
+            </form>
+         </div>
+      </div>
+   </div>
+</template>
