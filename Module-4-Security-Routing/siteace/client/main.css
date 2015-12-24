@@ -1,0 +1,34 @@
+/* CSS declarations go here */
+.hidden_div{
+	display: none;
+}
+
+.mt-sign-in {
+   padding-top: 10px;
+   font-size: 1.3em;
+}
+
+/*.mt-sign-in a {
+   color: white;
+}*/
+
+.mt-row {
+   text-align: center;
+}
+
+body {
+   padding-top: 70px;
+}
+
+.mt-list-websites {
+   padding-top: 20px;
+   font-size: 1.5em;
+}
+
+.mt-add-website {
+   font-size: 1.5em;
+}
+
+.mt-nav-header {
+   font-size: 1.75em;
+}

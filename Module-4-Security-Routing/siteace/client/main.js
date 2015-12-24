@@ -20,7 +20,7 @@ GetUserName = function(userId) {
 /////
 
 // helper function that returns all available websites
-Template.website_list.helpers({
+Template.listWebsites.helpers({
    websites:function(){
       return Websites.find({});
    }
@@ -30,7 +30,7 @@ Template.website_list.helpers({
 // template events
 /////
 
-Template.website_item.events({
+Template.listWebsiteItem.events({
 
    "click .js-upvote":function(event){
       // example of how you can access the id for the website in the database
@@ -55,10 +55,10 @@ Template.website_item.events({
    }
 });
 
-Template.website_form.events({
+Template.addWebsite.events({
 
    "click .js-toggle-website-form":function(event){
-      $("#website_form").toggle('slow');
+      $("#addWebsite").toggle('slow');
    },
 
    "submit .js-save-website-form":function(event){
