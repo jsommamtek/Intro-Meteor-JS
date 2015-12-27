@@ -22,8 +22,29 @@ GetUserName = function(userId) {
 // helper function that returns all available websites
 Template.listWebsites.helpers({
    websites:function(){
-      return Websites.find({});
+      return Websites.find({},
+         {
+            sort: { votes: -1, 'createdOn': -1 }
+         });
    }
+});
+
+Template.listWebsiteItem.helpers({
+   currentOwner: function (createdBy) {
+      if (Meteor.user()._id === createdBy) {
+         return true;
+      } else {
+         return false;
+      }
+   },
+   getUserName: function (userId) {
+      return GetUserName(userId);
+   }
+});
+
+//initialize all tooltips in this template
+Template.listWebsiteItem.onRendered(function() {
+   this.$('[data-toggle="tooltip"]').tooltip();
 });
 
 /////
@@ -37,7 +58,9 @@ Template.listWebsiteItem.events({
       // (this is the data context for the template)
       var website_id = this._id;
       console.log("Up voting website with id " + website_id);
+
       // put the code in here to add a vote to a website!
+      Websites.update({ '_id': website_id }, { $inc: { 'votes': 1 } });
 
       return false;  // prevent the button from reloading the page
    },
@@ -50,6 +73,24 @@ Template.listWebsiteItem.events({
       console.log("Down voting website with id "+website_id);
 
       // put the code in here to remove a vote from a website!
+      var websites = Websites.findOne({_id: website_id});
+      console.log(websites.votes);
+      if (websites.votes > 0) {
+         Websites.update({ '_id': website_id }, { $inc: { 'votes': -1 } });
+      }
+
+      return false;  // prevent the button from reloading the page
+   },
+      "click .js-delete-site":function(event){
+
+      // example of how you can access the id for the website in the database
+      // (this is the data context for the template)
+      var website_id = this._id;
+
+      //  remove website
+      $('#' + website_id).hide('slow', function() {
+         Websites.remove({ _id: website_id });
+      });
 
       return false;  // prevent the button from reloading the page
    }
@@ -67,8 +108,20 @@ Template.addWebsite.events({
       var url = event.target.url.value;
       console.log("The url they entered is: "+url);
 
-      //  put your website saving code in here!
+      var title = event.target.title.value;
+      var description = event.target.description.value;
 
+      //  put your website saving code in here!
+      Websites.insert({
+         title: title,
+         url: url,
+         description: description,
+         votes: 0,
+         createdOn: new Date(),
+         createdBy: Meteor.user()._id
+      });
+
+      $("#addWebsite").toggle('slow');
 
       return false;  // stop the form submit from reloading the page
    }

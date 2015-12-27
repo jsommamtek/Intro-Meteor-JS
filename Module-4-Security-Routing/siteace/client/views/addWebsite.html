@@ -1,9 +1,13 @@
 <template name="addWebsite">
    <div class="row mt-row">
-      <a class="btn btn-info js-toggle-website-form mt-add-website" href="#">
-         <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
-         Share a Website
-      </a>
+      {{ #if currentUser }}
+         <a class="btn btn-info js-toggle-website-form mt-add-website" href="#">
+            <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
+            Share a Website
+         </a>
+      {{ else }}
+         <h3>Sign-in to share your favorite websites</h3>
+      {{ /if }}
    </div>
    <div class="row">
       <div id="addWebsite" class="hidden_div">
