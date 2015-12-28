@@ -1,0 +1,29 @@
+<template name="listSiteComments">
+   <div class="row mt-list-comments-row">
+      <h3>Site Comments</h3>
+      {{ #if currentUser }}
+         <form class="js-save-comment-form">
+            <div class="form-group">
+               <label for="comment" class="mt-comment">Enter a Comment Here:</label>
+               <textarea class="form-control mt-comment" id="comment" placeholder="e.g. I really love the layout on this site..."></textarea>
+            </div>
+            <button type="submit" class="btn btn-default btn-lg">Post Comment</button>
+         </form>
+      {{ else }}
+         <h4>Sign-in to post comments here</h4>
+      {{ /if }}
+
+      {{ #each comments }}
+         <div class="mt-block-line-site-detail"></div>
+         <div class="mt-list-site-comments">
+            <p>{{ comment }}</p>
+         </div>
+         <div class="text-muted">
+            Posted By: {{ getUserName postedBy }}
+         </div>
+         <div class="text-muted">
+            Posted Date: {{ postedDate }}
+         </div>
+      {{ /each }}
+   </div>
+</template>

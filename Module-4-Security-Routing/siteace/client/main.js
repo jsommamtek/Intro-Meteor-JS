@@ -42,6 +42,24 @@ Template.listWebsiteItem.helpers({
    }
 });
 
+Template.showWebsiteDetail.helpers({
+   getUserName: function (userId) {
+      return GetUserName(userId);
+   }
+});
+
+Template.listSiteComments.helpers({
+   comments: function () {
+      return Comments.find({ siteId: this._id },
+         {
+            sort: { 'postedDate': -1 }
+         });
+   },
+   getUserName: function (userId) {
+      return GetUserName(userId);
+   }
+});
+
 //initialize all tooltips in this template
 Template.listWebsiteItem.onRendered(function() {
    this.$('[data-toggle="tooltip"]').tooltip();
@@ -122,6 +140,29 @@ Template.addWebsite.events({
       });
 
       $("#addWebsite").toggle('slow');
+
+      return false;  // stop the form submit from reloading the page
+   }
+});
+
+Template.showWebsiteDetail.events({
+
+   "submit .js-save-comment-form": function (event) {
+
+      var comment = event.target.comment.value;
+      var postedBy = Meteor.user()._id;
+      var postedDate = new Date();
+      var siteId = this._id;
+
+      //  put your comment saving code in here!
+      Comments.insert({
+         comment: comment,
+         postedBy: postedBy,
+         postedDate: postedDate,
+         siteId: siteId
+      });
+
+      $("#comment").val('');
 
       return false;  // stop the form submit from reloading the page
    }

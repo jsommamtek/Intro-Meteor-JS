@@ -7,11 +7,10 @@
       <p>
          {{ description }}
       </p>
-
       <div class="mt-posting-details">
          <p>Votes: <span class="mt-votes">{{ votes }}</span></p>
          <p>Posted By: {{ getUserName createdBy }}</p>
-         <p>Date Posted: {{ createdOn }}</p><br>
+         <p>Date Posted: {{ createdOn }}</p>
       </div>
 
       <a href="#" class="btn btn-default js-upvote">
@@ -26,6 +25,11 @@
       </a>
       {{ /if }}
 
+      <div class="mt-site-comments-link">
+         <a href="/sitedetail/{{ _id }}">
+            <span class="glyphicon glyphicon-hand-right"></span> Comments and more details...
+         </a>
+      </div>
    </li>
    <div class="mt-block-line"></div>
 </template>

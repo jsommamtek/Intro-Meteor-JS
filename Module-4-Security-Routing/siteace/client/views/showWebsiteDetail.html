@@ -1,0 +1,26 @@
+<template name="showWebsiteDetail">
+   <div class="row mt-site-posting">
+
+      <div class="mt-site-comments-link-back">
+         <a href="/"><span class="glyphicon glyphicon-hand-left"></span> Return to sites</a>
+      </div>
+
+      <a href="{{ url }}" target="_blank" class="mt-site-posting">
+         {{ title }}
+      </a>
+      <p>
+         {{ description }}
+      </p>
+
+      <div class="mt-posting-details">
+         <p>Votes: <span class="mt-votes">{{ votes }}</span></p>
+         <p>Posted By: {{ getUserName createdBy }}</p>
+         <p>Date Posted: {{ createdOn }}</p>
+      </div>
+
+      <div class="mt-block-line-site-detail"></div>
+   </div>
+
+   {{> listSiteComments}}
+
+</template>
