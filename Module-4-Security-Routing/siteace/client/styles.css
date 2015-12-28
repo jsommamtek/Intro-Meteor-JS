@@ -53,7 +53,6 @@ body {
 .mt-votes {
    font-size: -50%;
    font-weight: bold;
-   color: red;
 }
 
 .mt-posting-details {
@@ -89,4 +88,12 @@ body {
 
 .mt-list-comments-row {
    margin-bottom: 30px;
+}
+
+.mt-upvote {
+   color: green;
+}
+
+.mt-downvote {
+   color: red;
 }

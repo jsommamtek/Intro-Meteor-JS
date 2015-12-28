@@ -24,7 +24,7 @@ Template.listWebsites.helpers({
    websites:function(){
       return Websites.find({},
          {
-            sort: { votes: -1, 'createdOn': -1 }
+            sort: { upVotes: -1, 'createdOn': -1 }
          });
    }
 });
@@ -75,10 +75,9 @@ Template.listWebsiteItem.events({
       // example of how you can access the id for the website in the database
       // (this is the data context for the template)
       var website_id = this._id;
-      console.log("Up voting website with id " + website_id);
 
       // put the code in here to add a vote to a website!
-      Websites.update({ '_id': website_id }, { $inc: { 'votes': 1 } });
+      Websites.update({ '_id': website_id }, { $inc: { 'upVotes': 1 } });
 
       return false;  // prevent the button from reloading the page
    },
@@ -88,14 +87,9 @@ Template.listWebsiteItem.events({
       // example of how you can access the id for the website in the database
       // (this is the data context for the template)
       var website_id = this._id;
-      console.log("Down voting website with id "+website_id);
 
       // put the code in here to remove a vote from a website!
-      var websites = Websites.findOne({_id: website_id});
-      console.log(websites.votes);
-      if (websites.votes > 0) {
-         Websites.update({ '_id': website_id }, { $inc: { 'votes': -1 } });
-      }
+      Websites.update({ '_id': website_id }, { $inc: { 'downVotes': 1 } });
 
       return false;  // prevent the button from reloading the page
    },
@@ -134,7 +128,8 @@ Template.addWebsite.events({
          title: title,
          url: url,
          description: description,
-         votes: 0,
+         upVotes: 0,
+         downVotes: 0,
          createdOn: new Date(),
          createdBy: Meteor.user()._id
       });

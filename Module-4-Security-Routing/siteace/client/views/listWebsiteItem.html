@@ -8,16 +8,15 @@
          {{ description }}
       </p>
       <div class="mt-posting-details">
-         <p>Votes: <span class="mt-votes">{{ votes }}</span></p>
          <p>Posted By: {{ getUserName createdBy }}</p>
          <p>Date Posted: {{ createdOn }}</p>
       </div>
 
       <a href="#" class="btn btn-default js-upvote">
-         <span class="glyphicon glyphicon-arrow-up" aria-hidden="true"></span> Up-Vote
+         {{ upVotes }} <span class="glyphicon glyphicon-arrow-up mt-upvote" aria-hidden="true"></span> Up-Vote
       </a>
       <a href="#" class="btn btn-default js-downvote">
-         <span class="glyphicon glyphicon-arrow-down" aria-hidden="true"></span> Down-Vote
+         {{ downVotes }} <span class="glyphicon glyphicon-arrow-down mt-downvote" aria-hidden="true"></span> Down-Vote
       </a>
       {{ #if currentOwner createdBy}}
       <a href="#" class="btn btn-default js-delete-site">

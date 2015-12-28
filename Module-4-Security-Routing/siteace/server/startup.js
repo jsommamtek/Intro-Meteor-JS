@@ -8,7 +8,8 @@ Meteor.startup(function () {
          title: "Goldsmiths Computing Department",
          url: "http://www.gold.ac.uk/computing/",
          description: "This is where this course was developed.",
-         votes: 4,
+         upVotes: 4,
+         downVotes: 2,
          createdOn: new Date(),
          createdBy: 'system'
       });
@@ -16,7 +17,9 @@ Meteor.startup(function () {
          title: "University of London",
          url: "http://www.londoninternational.ac.uk/courses/undergraduate/goldsmiths/bsc-creative-computing-bsc-diploma-work-entry-route",
          description: "University of London International Programme.",
-         votes: 2,
+         upVotes: 4,
+         downVotes: 2,
+
          createdOn: new Date(),
          createdBy: 'system'
       });
@@ -24,7 +27,8 @@ Meteor.startup(function () {
          title: "Coursera",
          url: "http://www.coursera.org",
          description: "Universal access to the world’s best education.",
-         votes: 2,
+         upVotes: 4,
+         downVotes: 2,
          createdOn: new Date(),
          createdBy: 'system'
       });
@@ -32,7 +36,8 @@ Meteor.startup(function () {
          title: "Google",
          url: "http://www.google.com",
          description: "Popular search engine.",
-         votes: 1,
+         upVotes: 4,
+         downVotes: 2,
          createdOn: new Date(),
          createdBy: 'system'
       });
